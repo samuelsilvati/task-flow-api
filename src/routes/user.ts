@@ -9,10 +9,14 @@ interface CreateUserRequest {
 }
 
 export async function userRoutes(app: FastifyInstance) {
-  app.get('/users', async (request) => {
+  app.get('/users', async (request, reply) => {
     await request.jwtVerify()
-    const users = await prisma.user.findMany()
-    return users
+    const users = await prisma.user.findMany({
+      include: {
+        Task: true,
+      },
+    })
+    return reply.code(201).send(users)
   })
 
   app.post('/signup', async (request, reply) => {
