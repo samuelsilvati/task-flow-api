@@ -8,6 +8,7 @@ interface CreateTaskRequest {
   updatedAt: string
   isPending: boolean
   categoryId: number
+  id: string
 }
 
 export async function tasksRoutes(app: FastifyInstance) {
@@ -17,6 +18,9 @@ export async function tasksRoutes(app: FastifyInstance) {
 
   app.get('/tasks', async (request, reply) => {
     const tasks = await prisma.task.findMany({
+      where: {
+        userId: request.user.sub,
+      },
       orderBy: {
         createdAt: 'asc',
       },
@@ -45,6 +49,51 @@ export async function tasksRoutes(app: FastifyInstance) {
       reply.code(201).send(newCategory)
     } catch (err) {
       reply.code(500).send({ message: 'Erro ao criar tarefa' })
+    }
+  })
+
+  app.put('/task/:id', async (request, reply) => {
+    const { name, description, createdAt, updatedAt, isPending, categoryId } =
+      request.body as CreateTaskRequest
+    const { id } = request.params as CreateTaskRequest
+    const idNumber = Number(id)
+
+    try {
+      const newCategory = await prisma.task.update({
+        where: {
+          id: idNumber,
+        },
+        data: {
+          name,
+          description,
+          createdAt,
+          updatedAt,
+          isPending,
+          categoryId,
+          userId: request.user.sub,
+        },
+      })
+
+      reply.code(200).send(newCategory)
+    } catch (err) {
+      reply.code(500).send({ message: 'Erro ao criar tarefa' })
+    }
+  })
+
+  app.delete('/task/:id', async (request, reply) => {
+    const { id } = request.params as CreateTaskRequest
+    const idNumber = Number(id)
+
+    try {
+      await prisma.task.delete({
+        where: {
+          id: idNumber,
+        },
+      })
+
+      reply.code(200).send()
+    } catch (err) {
+      reply.code(500).send({ message: 'Erro ao deletar tarefa' })
     }
   })
 }
