@@ -26,8 +26,7 @@ export async function userRoutes(app: FastifyInstance) {
       },
     })
     if (userAlreadyExists) {
-      reply.code(409).send({ message: 'Usuário já cadastrado' })
-      return
+      return reply.code(409).send({ message: 'Usuário já cadastrado' })
     }
 
     try {
