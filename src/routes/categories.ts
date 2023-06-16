@@ -17,8 +17,8 @@ export async function categoriesRoutes(app: FastifyInstance) {
         createdAt: 'asc',
       },
     })
-    reply.code(200).send(categories)
-    return categories
+
+    return reply.code(200).send(categories)
   })
 
   app.post('/new-category', async (request, reply) => {
