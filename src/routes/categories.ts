@@ -72,7 +72,7 @@ export async function categoriesRoutes(app: FastifyInstance) {
           name,
         },
       })
-      reply.code(201).send(editCategory)
+      reply.code(200).send(editCategory)
     } catch (err) {
       reply.code(500).send({ message: 'Erro ao editar categoria' })
     }
@@ -88,7 +88,7 @@ export async function categoriesRoutes(app: FastifyInstance) {
         },
       })
 
-      reply.code(201).send()
+      reply.code(200).send()
     } catch (err) {
       reply.code(500).send({ message: 'Erro ao apagar categoria' })
     }
