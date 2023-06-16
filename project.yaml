@@ -6,7 +6,7 @@
 │ - email: String                 │         │ - createdAt: DateTime         │         │ - description: int            │
 │ - password: String              │         │ - updatedAt: DateTime         │         │ - createdAt: DateTime         │
 │                                 │         │                               │         │ - updatedAt: DateTime         │
-│ - tasks: Task[]                 │ <-----+ │ - tasks: Task[]               │ <-----+ │ - isPending: Boolean          │
+│ - task: Task[]                  │ <-----+ │ - tasks: Task[]               │ <-----+ │ - isPending: Boolean          │
 └─────────────────────────────────┘         └───────────────────────────────┘         │                               │
                                                                                       | category: Category            |
                                                                                       |                               |
