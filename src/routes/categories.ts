@@ -13,6 +13,9 @@ export async function categoriesRoutes(app: FastifyInstance) {
 
   app.get('/categories', async (request, reply) => {
     const categories = await prisma.category.findMany({
+      include: {
+        tasks: true,
+      },
       orderBy: {
         createdAt: 'asc',
       },
