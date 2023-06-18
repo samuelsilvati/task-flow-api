@@ -18,14 +18,14 @@ export async function authRoutes(app: FastifyInstance) {
     })
 
     if (!userAlreadyExists) {
-      reply.code(409).send('Usuário ou senha incorretos')
+      reply.code(409).send({ message: 'Usuário ou senha incorretos' })
       return
     }
 
     const passwordMatch = await compare(password, userAlreadyExists?.password)
 
     if (!passwordMatch) {
-      reply.code(401).send('Usuário ou senha incorretos')
+      reply.code(401).send({ message: 'Usuário ou senha incorretos' })
     }
 
     const token = app.jwt.sign(
