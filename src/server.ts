@@ -5,6 +5,7 @@ import { userRoutes } from './routes/user'
 import { authRoutes } from './routes/auth'
 import { categoriesRoutes } from './routes/categories'
 import { tasksRoutes } from './routes/tasks'
+import { forgotPassRoutes } from './routes/forgotPass'
 
 const app = fastify()
 app.register(cors, {
@@ -15,6 +16,7 @@ app.register(userRoutes)
 app.register(authRoutes)
 app.register(categoriesRoutes)
 app.register(tasksRoutes)
+app.register(forgotPassRoutes)
 
 app.register(jwt, {
   secret: `${process.env.JWT_SECRET}`,
