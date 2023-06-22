@@ -60,11 +60,14 @@ export async function forgotPassRoutes(app: FastifyInstance) {
                   .button {
                     display: inline-block;
                     background-color: #007bff;
-                    color: "white";
+                    color: "#FFFFFF";
                     padding: 10px 20px;
                     text-decoration: none;
                     font-weight: bold;
                     border-radius: 4px;
+                  }
+                  .button:visited {
+                    color: '#FFFFFF'
                   }
                 </style>
               </head>
