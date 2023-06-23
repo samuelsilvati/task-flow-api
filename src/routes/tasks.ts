@@ -29,6 +29,19 @@ export async function tasksRoutes(app: FastifyInstance) {
     return tasks
   })
 
+  app.get('/task/:id', async (request, reply) => {
+    const { id } = request.params as CreateTaskRequest
+    const idNumber = Number(id)
+    console.log(id)
+    const tasks = await prisma.task.findUniqueOrThrow({
+      where: {
+        id: idNumber,
+      },
+    })
+    reply.code(200).send(tasks)
+    return tasks
+  })
+
   app.post('/new-task', async (request, reply) => {
     const { name, description, createdAt, updatedAt, isPending, categoryId } =
       request.body as CreateTaskRequest
@@ -56,6 +69,7 @@ export async function tasksRoutes(app: FastifyInstance) {
     const { name, description, createdAt, updatedAt, isPending, categoryId } =
       request.body as CreateTaskRequest
     const { id } = request.params as CreateTaskRequest
+    console.log(id)
     const idNumber = Number(id)
 
     try {
