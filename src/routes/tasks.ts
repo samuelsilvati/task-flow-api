@@ -90,7 +90,7 @@ export async function tasksRoutes(app: FastifyInstance) {
 
       reply.code(200).send(newCategory)
     } catch (err) {
-      reply.code(500).send({ message: 'Erro ao criar tarefa' })
+      reply.code(500).send({ message: 'Erro ao editar tarefa' })
     }
   })
 
