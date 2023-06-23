@@ -6,7 +6,7 @@ interface CreateTaskRequest {
   description: string
   createdAt: string
   updatedAt: string
-  isPending: boolean
+  isChecked: boolean
   categoryId: number
   id: string
 }
@@ -43,7 +43,7 @@ export async function tasksRoutes(app: FastifyInstance) {
   })
 
   app.post('/new-task', async (request, reply) => {
-    const { name, description, createdAt, updatedAt, isPending, categoryId } =
+    const { name, description, createdAt, updatedAt, isChecked, categoryId } =
       request.body as CreateTaskRequest
 
     try {
@@ -53,7 +53,7 @@ export async function tasksRoutes(app: FastifyInstance) {
           description,
           createdAt,
           updatedAt,
-          isPending,
+          isChecked,
           categoryId,
           userId: request.user.sub,
         },
@@ -66,7 +66,7 @@ export async function tasksRoutes(app: FastifyInstance) {
   })
 
   app.put('/task/:id', async (request, reply) => {
-    const { name, description, createdAt, updatedAt, isPending, categoryId } =
+    const { name, description, createdAt, updatedAt, isChecked, categoryId } =
       request.body as CreateTaskRequest
     const { id } = request.params as CreateTaskRequest
     console.log(id)
@@ -82,7 +82,7 @@ export async function tasksRoutes(app: FastifyInstance) {
           description,
           createdAt,
           updatedAt,
-          isPending,
+          isChecked,
           categoryId,
           userId: request.user.sub,
         },
