@@ -8,6 +8,9 @@
     "lint": "eslint src --ext .ts --fix",
     "deploy": "npx prisma migrate deploy"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed/seed.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
