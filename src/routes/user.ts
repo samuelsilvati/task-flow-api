@@ -19,6 +19,20 @@ export async function userRoutes(app: FastifyInstance) {
     return reply.code(200).send(users)
   })
 
+  app.get('/user/:id', async (request, reply) => {
+    const { id } = request.params as CreateUserRequest
+    // const idNumber = Number(id)
+    await request.jwtVerify()
+    console.log(id)
+    const user = await prisma.user.findUnique({
+      where: {
+        id,
+      },
+    })
+    reply.code(200).send(user)
+    return user
+  })
+
   app.post('/signup', async (request, reply) => {
     const { name, email, password } = request.body as CreateUserRequest
 
