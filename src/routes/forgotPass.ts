@@ -76,7 +76,7 @@ export async function forgotPassRoutes(app: FastifyInstance) {
                   <h2>Recuperação de Senha</h2>
                   <p>Olá &nbsp;${userAlreadyExists.name}!</p>
                   <p>Recebemos uma solicitação para redefinição de senha associada à sua conta. Para continuar o processo de recuperação de senha, clique no botão abaixo para redefinir sua senha:</p>
-                  <a href="${process.env.CLIENT_BASE_URL}/login/reset-password?token=${token}&id=${id}" class="button">Redefinir Senha</a>
+                  <a href="${process.env.CLIENT_BASE_URL}/reset-password?token=${token}&id=${id}" class="button">Redefinir Senha</a>
                   <p>Caso você não tenha solicitado a recuperação de senha, ignore este e-mail.</p>
                   <p>Atenciosamente,</p>
                   <p>Equipe de Suporte</p>
