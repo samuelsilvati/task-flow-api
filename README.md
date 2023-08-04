@@ -74,15 +74,15 @@ Certifique-se de incluir o token JWT no cabeçalho de autorização (Bearer toke
 ### Categorias
 - GET /categories: Retorna todas as categorias do usuário e as tarefas associadas de cada uma.
 - POST /new-category: Cria uma nova categoria.
-- PUT /category/:id: Atualiza uma categoria existente pelo seu ID.
-- DELETE /category/:id: Exclui uma categoria existente pelo seu ID.
+- PUT /category/:id : Atualiza uma categoria existente pelo seu ID.
+- DELETE /category/:id : Exclui uma categoria existente pelo seu ID.
 
 ### Tarefas
 - GET /tasks: Retorna todas as tarefas do usuário.
-- GET /task/:id: Retorna uma tarefa específica pelo seu ID.
+- GET /task/:id Retorna uma tarefa específica pelo seu ID.
 - POST /new-task: Cria uma nova tarefa.
-- PUT /task/:id: Atualiza uma tarefa existente pelo seu ID.
-- DELETE /tasks/:id: Exclui uma tarefa existente pelo seu ID.
+- PUT /task/:id : Atualiza uma tarefa existente pelo seu ID.
+- DELETE /tasks/:id : Exclui uma tarefa existente pelo seu ID.
 
 ## Modelos de dados
 
